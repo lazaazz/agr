@@ -70,11 +70,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const register = async (userData: any) => {
     try {
       setLoading(true);
-      const { email, password, confirmPassword, ...userProfile } = userData;
-      
-      if (password !== confirmPassword) {
-        throw new Error('Passwords do not match');
-      }
+      const { email, password, ...userProfile } = userData;
 
       const { user: newUser, error } = await signUpWithEmail(email, password, userProfile);
       

@@ -68,8 +68,8 @@ const Auth: React.FC = () => {
         await register(userData);
       }
       navigate('/dashboard');
-    } catch (error) {
-      setError(isLogin ? 'Invalid email or password' : 'Registration failed. Please try again.');
+    } catch (error: any) {
+      setError(error.message || (isLogin ? 'Invalid email or password' : 'Registration failed. Please try again.'));
     } finally {
       setLoading(false);
     }
